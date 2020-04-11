@@ -28,40 +28,40 @@ XTerm.vt100.saveLines: 10000
 xterm*rightScrollBar:   true
 xterm*ScrollBar:    true
 
-! Jummiterm color scheme
+! Jummidark color scheme
 ! special
-*.foreground:   #b2b2b2
-*.background:   #292b2e
+*.foreground:   #e1e1e1
+*.background:   #262626
 *.cursorColor:  #b1951d
 
 ! black
-*.color0:       #b2b2b2
-*.color8:       #68727c
+*.color0:       #121212
+*.color8:       #4e4e4e
 
 ! red
-*.color1:       #ce537a
-*.color9:       #806aa8
+*.color1:       #a14e5d
+*.color9:       #cf6679
 
 ! green
-*.color2:       #2d9574
-*.color10:      #a45bad
+*.color2:       #03dac6
+*.color10:      #03dac6
 
 ! yellow
-*.color3:       #a45bad
-*.color11:      #7590db
+*.color3:       #1de9b6
+*.color11:      #1de9b6
 
 ! blue
-*.color4:       #4f97d7
-*.color12:      #21b8c7
+*.color4:       #6200ee
+*.color12:      #bb86fc
 
 ! magenta
-*.color5:       #bc6ec5
-*.color13:      #2d9574
+*.color5:       #bb86fc
+*.color13:      #bb86fc
 
 ! cyan
-*.color6:       #806aa8
-*.color14:      #ce537a
+*.color6:       #03dac6
+*.color14:      #03dac6
 
 ! white
-*.color7:       #68727c
-*.color15:      #b2b2b2
+*.color7:       #8a8a8a
+*.color15:      #e4e4e4
