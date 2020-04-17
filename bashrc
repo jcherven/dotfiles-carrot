@@ -1,18 +1,6 @@
 # ~/dotfiles-mac/bashrc
 
 # Environment variable exports
-# PATH exports for tab completion
-# MacOS-specific PATH exports
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Include Homebrew installed packages
-    export PATH="/usr/local/bin:$PATH"
-    export PATH="/usr/local/sbin:$PATH"
-    # Tab completion via Homebrew package
-    [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-
-  # GNU coreutils, if you decide to use them instead of the built in BSD utils
-  export PATH="$(brew --prefix coreutils)/libexev/gnubin:$PATH"
-fi
 
 # Improved less functionality
 # https://www.topbug.net/blog/2016/09/27/make-gnu-less-more-powerful/
@@ -21,8 +9,6 @@ export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --
 # Set nvim/vim as the default editor if either are installed
 if [ -x "$(command -v nvim)" ]; then
   export EDITOR=nvim
-elif [ -x "$(command -v vim)" ]; then
-  export EDITOR=vim
 else
   export EDITOR=vi
 fi
@@ -60,41 +46,12 @@ fi #}}}
 # end env exports
 
 # Aliases
-# MacOS Only: Use the GNU utils installed in the homebrew bootstrap script instead of the BSD stock utils {{{
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  if [ -x "$(command -v gfind)" ]; then
-    alias find='gfind'
-  fi
-  if [ -x "$(command -v ggrep)" ]; then
-    alias grep='ggrep'
-  fi
-  if [ -x "$(command -v gtar)" ]; then
-    alias tar='gtar'
-  fi
-  # if [ -x "$(command -v gwhich)" ]; then
-  #   alias which='gwhich'
-  # fi
-  if [ -x "$(command -v gdircolors)" ]; then
-    alias dircolors='gdircolors'
-  fi
-fi #}}}
 
 # Improved ls functionality {{{
 # https://www.topbug.net/blog/2016/11/28/a-better-ls-command/
 eval "$(dircolors)"
 # For linux
-if [[ "$OSTYPE" == "linux-gnu"  ]]; then
-  alias ls='ls -F -h --color=always -v'
-# For MacOS
-elif [[ "$OSTYPE" == "darwin"*  ]]; then
-  if [ -x "$(command -v gls)" ]; then
-    # Executes if GNU coreutils is installed
-    alias ls='gls -F -h --color=always -v'
-  else
-    # Executes with stock BSD core utils installed
-    alias ls='ls -G -F -h'
-  fi
-fi #}}}
+alias ls='ls --group-directories-first -F -h --color=always -v'
 
 # For locally defined aliases that don't need to be included in this config
 # ALIASFILE= "$HOME/.bash_aliases"
@@ -134,5 +91,7 @@ if [ ! -x "$(command -v nvm)" ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # ex: set foldmethod=marker:
