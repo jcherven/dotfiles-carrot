@@ -1,9 +1,22 @@
-#!/bin/bash
+#!/bin/sh
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
 
-xrdb -merge ~/.Xresources &
-xmodmap ~/.Xmodmap &
-#exec vtwm
-#exec fvwm
-#exec spectrwm
-#exec i3
-#exec wmaker
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+	for f in /etc/X11/xinit/xinitrc.d/*; do
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+fi
+
+if [ -f $userresources ]; then
+  xrdb -merge $userresources
+fi
+
+if [ -f $usermodmap ]; then
+  xmodmap $usermodmap
+fi
+
+exec wmaker || exec twm
