@@ -20,6 +20,12 @@ XTerm.ttyModes: erase ^?
 /* *.colorBD: blue */
 
 !! X Resources used by URXvt
+! Enable extensions provided by urxvt-perls
+URxvt.perl-ext-common: clipboard
+! Enable perl clipboard extension
+URxvt.clipboard.autocopy: true
+URxvt.keysym.Mod4-c: perl:clipboard:copy
+URxvt.keysym.Mod4-v: perl:clipboard:paste
 ! Appearance
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
