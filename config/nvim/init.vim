@@ -191,34 +191,33 @@ call plug#begin('~/.vim/plugged')
     endif
   " Code completion. See github.com/neoclide/coc.nvim/wiki/ for usage help {{{
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " let g:coc_global_extensions=[
-    "       \'coc-json',
-    "       \'coc-tsserver',
-    "       \'coc-css',
-    "       \'coc-html',
-    "       \'coc-emmet',
-    "       \'coc-python',
-    "       \'coc-highlight',
-    "       \'coc-yaml',
-    "       \'coc-markdownlint',
-    "       \'coc-powershell',
-    "       \'coc-vimlsp'
-    "       \]
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-  let g:markdown_fenced_languages = [
-        \ 'vim',
-        \ 'help'
-        \]
-  Plug 'coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
+    let g:coc_global_extensions=[
+          \'coc-json',
+          \'coc-tsserver',
+          \'coc-css',
+          \'coc-html',
+          \'coc-emmet',
+          \'coc-python',
+          \'coc-highlight',
+          \'coc-yaml',
+          \'coc-markdownlint',
+          \'coc-powershell',
+          \'coc-vimlsp'
+          \]
+  " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+  " Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+  " let g:markdown_fenced_languages = [
+  "       \ 'vim',
+  "       \ 'help'
+  "       \]
+  " Plug 'coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}
   " }}}
 call plug#end()
 
