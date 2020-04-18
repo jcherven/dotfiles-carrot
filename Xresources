@@ -32,6 +32,8 @@ URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
 URxvt.letterSpace: 0
 URxvt.intensityStyles: true
 
+! Keybindings
+!
 /* ! Jummidark color scheme */
 /* ! special */
 *.foreground:   rgb:e1/e1/e1
