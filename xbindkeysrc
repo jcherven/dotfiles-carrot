@@ -66,16 +66,18 @@
 #  Control + b:2 + Release
 
 # Custom Keybinds
-  # windows/cmd/super:  mod4
+# Use xmodmap -pm to print all of the current modifier keysyms/codes
+  # windows/cmd/super:  mod4 or m:4
   # alt/meta:           alt
   # ctrl:               control
   # shfit:              shift
+
 # Mac-like copy/cut/paste
 "xclip -i -selection clipboard | xclip -i -f -selection primary"
 mod4 + c
-# super+v appears to be captured by another command before xbindkeys can use it
-# "xclip -o -selection clipboard | xclip -o -f -selection primary"
-# mod4 + v
+
+"xclip -o -selection clipboard | xclip -o -f -selection primary"
+mod4 + v
 
 # alsa mixer volup
 "amixer set Master 3%+"

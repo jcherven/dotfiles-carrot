@@ -34,7 +34,7 @@ URxvt.internalBorder: 9
 URxvt.fading: 25
 URxvt.fadeColor: #262626
 ! Typography
-URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
+!URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
 URxvt.letterSpace: 0
 URxvt.intensityStyles: true
 

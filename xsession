@@ -34,5 +34,5 @@ fi
 
 exec xscreensaver -no-splash &
 exec xbindkeys &
-# exec spectrwm || exec twm
-exec wmaker || exec twm
+exec spectrwm || exec twm
+# exec wmaker || exec twm
