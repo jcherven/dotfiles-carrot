@@ -226,12 +226,12 @@ call plug#end()
 set statusline=
   " Current buffer's file path relative to the git project root
   set statusline+=\ %f
-  " Read Only marker
-  set statusline+=%{&modifiable?'':'\ '}
+  " Modifiable and Read Only marker (modifiable not yet included)
+  set statusline+=%{&readonly?'\ ':''}
   " Modified marker
   set statusline+=%{&modified?'[+]':''}\ 
   " CoC statusline integration
-  set statusline+=%{coc#status()}\ 
+  " set statusline+=%{coc#status()}\ 
 " Right alignment for the below customizations
 set statusline+=%=
   " Current filetype
