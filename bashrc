@@ -77,7 +77,8 @@ man() {
     LESS_TERMCAP_ue=$(printf "\e[0m") \
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man $@
-} #}}}
+}
+#}}}
 
 # Git completion for branch names, subcommands, and more
 GITCOMPLETION="$HOME/dotfiles/bash_completion/git-completion.bash"
@@ -94,5 +95,4 @@ fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# hi
 # ex: set foldmethod=marker:
