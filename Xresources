@@ -35,6 +35,13 @@ URxvt.fading: 33
 URxvt.fadeColor: #262626
 ! Typography
 !URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
+!URxvt.font: -*-Unifont-medium-r-normal-sans-16-*-75-75-c-*-iso10646-1
+!Urxvt.font: -*-Tamsyn-medium-*-*-*-15-*-*-*-*-*-*-*
+!Urxvt.boldFont: -*-Tamsyn-bold-*-*-*-15-*-*-*-*-*-*-*
+URxvt.font: -*-gohufont-medium-r-normal-*-14-100-100-100-c-80-*-*
+URxvt.boldFont: -*-gohufont-bold-r-normal-*-14-100-100-100-c-80-*-*
+!URxvt.font: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*
+!URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*-*-*-*-*-*
 URxvt.letterSpace: 0
 URxvt.intensityStyles: true
 
