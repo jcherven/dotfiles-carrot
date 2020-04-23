@@ -41,7 +41,8 @@ if [ -f  "$GITPROMPT" ]; then
 
   RESETCOLOR="\[\033[0m\]"
   export PS1="$NORMALBLUE\u $BRIGHTBLUE\W$BRIGHTRED\$(__git_ps1)$RESETCOLOR \$ "
-fi #}}}
+fi
+#}}}
 
 # end env exports
 
@@ -62,6 +63,7 @@ if [ -f ~/.bash_aliases ]; then
    echo "A local aliases file has been created at ~/.bash_aliases."
    echo "Define any aliases you only need on this computer in there."
 fi
+# }}}
 
 # end Aliases
 

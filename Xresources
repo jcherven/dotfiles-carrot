@@ -1,23 +1,26 @@
 ! #include "other-x-resource"
 
+! Font rendering
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 96
+
 XTerm.termName: xterm-256color
-/* ! utf8 support */
+
+! utf8 support
 XTerm*utf8: 1
 XTerm.vt100.locale: true
-/* XTerm.vt100.loginShell: true */
+!XTerm.vt100.loginShell: true
 XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.backarrowKey : false
 XTerm.ttyModes: erase ^?
 
-/* XTerm.vt100.saveLines: 10000 */
-
-/* ! White text on black instead of the default */
-/* *reverseVideo: true */
-/* !XTerm.vt100.foreground: #ffffff */
-/* !XTerm.vt100.background: black */
-
-/* *.colorBDMode: true */
-/* *.colorBD: blue */
+! *.colorBDMode: true
+! *.colorBD: blue
 
 !! X Resources used by URXvt
 ! Enable extensions provided by urxvt-perls
@@ -33,18 +36,20 @@ URxvt.borderLess: false
 URxvt.internalBorder: 9
 URxvt.fading: 33
 URxvt.fadeColor: #262626
+
 ! Typography
 !URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
 !URxvt.font: -*-terminus-medium-r-normal-*-14-*
 !URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*
-URxvt.font: Fixed
+URxvt.font: -*-fixed-medium-r-normal-*-16-*-75-75-*
+URxvt.boldFont: -*-fixed-bold-r-normal-*-16-*-75-75-*
 URxvt.letterSpace: 0
 URxvt.intensityStyles: true
 
 ! Keybindings
 !
-/* ! Jummidark color scheme */
-/* ! special */
+! Jummidark color scheme
+! special
 *.foreground:   rgb:e1/e1/e1
 *.background:   rgb:26/26/26
 *.cursorColor:  rgb:b1/95/1d
@@ -72,39 +77,3 @@ URxvt.intensityStyles: true
 ! white
 *.color7:       rgb:8a/8a/8a
 *.color15:      rgb:e4/e4/e4
-/* *.foreground:   #e1e1e1 */
-/* *.background:   #262626 */
-/* *.cursorColor:  #b1951d */
-
-/* ! black */
-/* *.color0:       #121212 */
-/* *.color8:       #4e4e4e */
-
-/* ! red */
-/* *.color1:       #a14e5d */
-/* *.color9:       #cf6679 */
-
-/* ! green */
-/* *.color2:       #03dac6 */
-/* *.color10:      #03dac6 */
-
-/* ! yellow */
-/* *.color3:       #1de9b6 */
-/* *.color11:      #1de9b6 */
-
-/* ! blue */
-/* *.color4:       #6200ee */
-/* *.color12:      #bb86fc */
-
-/* ! magenta */
-/* *.color5:       #bb86fc */
-/* *.color13:      #bb86fc */
-
-/* ! cyan */
-/* *.color6:       #03dac6 */
-/* *.color14:      #03dac6 */
-
-/* ! white */
-/* *.color7:       #8a8a8a */
-/* *.color15:      #e4e4e4 */
-
