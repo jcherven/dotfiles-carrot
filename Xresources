@@ -21,7 +21,7 @@ XTerm.ttyModes: erase ^?
 
 !! X Resources used by URXvt
 ! Enable extensions provided by urxvt-perls
-URxvt.perl-ext-common: clipboard
+URxvt.perl-ext-common: clipboard,osc-xterm-clipboard
 ! Enable perl clipboard extension
 URxvt.clipboard.autocopy: true
 URxvt.keysym.Mod4-c: perl:clipboard:copy
@@ -31,7 +31,7 @@ URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.borderLess: false
 URxvt.internalBorder: 9
-URxvt.fading: 25
+URxvt.fading: 33
 URxvt.fadeColor: #262626
 ! Typography
 !URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
@@ -58,7 +58,7 @@ URxvt.intensityStyles: true
 *.color3:       rgb:1d/e9/b6
 *.color11:      rgb:1d/e9/b6
 ! blue
-*.color4:       rgb:62/00/ee
+*.color4:       rgb:7e/3f/f2
 *.color12:      rgb:bb/86/fc
 ! magenta
 *.color5:       rgb:bb/86/fc
