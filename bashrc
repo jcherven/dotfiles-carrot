@@ -88,7 +88,7 @@ if [ -f "$GITCOMPLETION" ]; then
   source "$GITCOMPLETION"
 fi
 
-# Required for NVM
+# Required for NVM shell completion
 # https://github.com/nvm-sh/nvm#manual-install
 if [ ! -x "$(command -v nvm)" ]; then
   export NVM_DIR="$HOME/.nvm"
