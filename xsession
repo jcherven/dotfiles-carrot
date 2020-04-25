@@ -35,5 +35,6 @@ fi
 eval $(ssh-agent)
 exec xscreensaver -no-splash &
 exec xbindkeys &
+exec lxsession &
 exec spectrwm || exec wmaker
 # exec wmaker || exec twm
