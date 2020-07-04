@@ -19,4 +19,7 @@ if [ -f $usermodmap ]; then
   xmodmap $usermodmap
 fi
 
-exec wmaker || exec twm
+eval $(ssh-agent)
+xscrensaver -no-splash &
+xsettingsd &
+exec startlxqt

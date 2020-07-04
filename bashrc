@@ -7,11 +7,11 @@
 export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --no-init --window=-8'
 
 # Set nvim/vim as the default editor if either are installed
-if [ -x "$(command -v nvim)" ]; then
-  export EDITOR=nvim
-else
-  export EDITOR=vi
-fi
+#if [ -x "$(command -v nvim)" ]; then
+#  export EDITOR=nvim
+#else
+#  export EDITOR=vi
+#fi
 
 # end PATH exports
 

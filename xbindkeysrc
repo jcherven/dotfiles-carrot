@@ -80,25 +80,25 @@ mod4 + c
 mod4 + v
 
 # alsa mixer volup
-"amixer set Master 3%+"
-    m:0x0 + c:123
-    XF86AudioRaiseVolume
+# "amixer set Master 3%+"
+#     m:0x0 + c:123
+#     XF86AudioRaiseVolume
 
 # alsa mixer voldown
-"amixer set Master 3%-"
-    m:0x0 + c:122
-    XF86AudioLowerVolume
+# "amixer set Master 3%-"
+#     m:0x0 + c:122
+#     XF86AudioLowerVolume
 
 # alsa mixer speaker mute
 # "amixer set Master 0%"
-"amixer set Master toggle"
-    m:0x0 + c:121
-    XF86AudioMute
+# "amixer set Master toggle"
+#     m:0x0 + c:121
+#     XF86AudioMute
 
 # alsa mixer mic mute
-"mute_mic"
-    m:0x0 + c:198
-    XF86AudioMicMute
+# "mute_mic"
+#     m:0x0 + c:198
+#     XF86AudioMicMute
 
 ##################################
 # End of xbindkeys configuration #
