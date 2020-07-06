@@ -1,5 +1,8 @@
 ! #include "other-x-resource"
 
+! All fonts
+*.font: xft:Cozette:pixelsize=14
+
 ! Font rendering
 Xft.lcdfilter: lcddefault
 Xft.antialias: true
@@ -39,9 +42,9 @@ URxvt.fadeColor: #262626
 
 ! Typography
 !URxvt.font: xft:Iosevka Nerd Font:pixelsize=14
-URxvt.font: xft:Cozette:pixelsize=14
 !URxvt.boldFont: xft:Iosevka Nerd Font:style=Bold:pixelsize=14
-URxvt.boldFont: xft:Cozette:pixelsize=14
+! URxvt.font: xft:TamzenForPowerline:pixelsize=14
+! URxvt.boldFont: xft:TamzenForPowerline:pixelsize=14
 !URxvt.font: -*-terminus-medium-r-normal-*-14-*
 !URxvt.boldFont: -*-terminus-bold-r-normal-*-14-*
 !Unifont!URxvt.font: -*-fixed-medium-r-normal-*-16-*-75-75-*
