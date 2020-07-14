@@ -7,6 +7,8 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 set showtabline=2
 " set noshowmode
+set cmdheight=2
+" set signcolumn=no
 set autoread
 set showmatch
 set incsearch
@@ -25,11 +27,10 @@ set magic
 set number
 set noautochdir
 set cursorline
-" Only show the cursorline in the active window {{{
-augroup CursorLineOnlyInActiveWindow
+augroup CursorLineOnlyInActiveWindow "{{{
 autocmd!
 autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+autocmd WinLeave,BufLeave * setlocal nocursorline
 augroup END
 " }}}
 set scrolloff=8
@@ -38,6 +39,7 @@ set splitright
 set eadirection=both
 set equalalways
 set foldmethod=marker
+set relativenumber
 
 " Filetype specific settings
 autocmd FileType help setlocal colorcolumn=80
@@ -52,12 +54,23 @@ nnoremap <C-L> <C-w><C-L>
 nnoremap <C-H> <C-w><C-H>
 set mouse=a
 
+" vim-plug
 call plug#begin('~/.vim/plugged')
   Plug 'junegunn/vim-plug'
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'sickill/vim-pasta'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'tpope/vim-surround'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'psliwka/vim-smoothie'
+  Plug 'djoshea/vim-autoread'
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'jeffKreeftmeijer/vim-numbertoggle'
+  Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-fugitive'
+  Plug 'AndrewRadev/tagalong.vim'
+  Plug 'gcmt/taboo.vim' "{{{
+  let g:taboo_tabline=1
+  let g:taboo_modified_tab_flag="[+]"
   fun! GitInfo()
     let git = fugitive#head()
     if git != ''
@@ -66,90 +79,16 @@ call plug#begin('~/.vim/plugged')
       return ''
     endif
   endfunction
-  Plug 'tpope/vim-surround'
-  " Plug 'tpope/vim-commentary'
-  Plug 'tomtom/tcomment_vim'
-  " Plug 'itchyny/lightline.vim'
-  Plug 'gcmt/taboo.vim'
-  let g:taboo_tabline=1
-  let g:taboo_modified_tab_flag="[+]"
   let g:taboo_tab_format="▏%N:%P%m %{GitInfo()}▕"
   let g:taboo_renamed_tab_format="▏%N:%l%m %{GitInfo()}▕"
-  Plug 'sheerun/vim-polyglot'
-  Plug 'dense-analysis/ale' "{{{
-  let g:ale_fix_on_save=1
-  let g:ale_linters_explicit=1
-  let g:ale_javascript_prettier_options='--single-quote'
-  let g:ale_linters={
-        \ 'javascript': ['prettier'],
-        \ 'javascriptreact': ['prettier'],
-        \ 'css': ['prettier'],
-        \ 'sass': ['prettier'],
-        \ 'html': ['prettier'],
-        \ 'json': ['prettier'],
-        \ 'markdown': ['prettier']
-  \}
-  let g:ale_fixers={
-        \ 'javascript': ['prettier'],
-        \ 'javascriptreact': ['prettier'],
-        \ 'css': ['prettier'],
-        \ 'sass': ['prettier'],
-        \ 'html': ['prettier'],
-        \ 'json': ['prettier'],
-        \ 'markdown': ['prettier']
-  \}
   "}}}
-  Plug 'scrooloose/nerdtree' "{{{
-  " Function for smart NERDTree toggle behavior.
-  " Call on the NERDTree toggle keybinding.
-  " Performs NERDTreeFind on open, toggles the buffer on close.
-  function! NERDTreeFindToggle()
-    if exists("g:NERDTree") && g:NERDTree.IsOpen()
-      NERDTreeClose
-    elseif filereadable(expand('%'))
-      NERDTreeFind
-    else
-      NERDTree
-    endif
-  endfunction
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-  map <leader>/ :call NERDTreeFindToggle()<CR>
-  let g:NERDTreeMapJumpParent = "h"
-  let g:NERDTreeMapActivateNode = "l"
-  let NERDTreeMinimalUI=1
-  let g:NERDTreeWinPos = "left"
-  let g:NERDTreeShowLineNumbers=1
-  let g:NERDTreeDirArrows=1
-  let g:NERDTreeAutoDeleteBuffer=1
-  let g:NERDTreeShowHidden=1
-  let g:NERDTreeSortHiddenFirst=1
-  let g:NERDTreeQuitOnOpen=1
-  let g:NERDTreeStatusline="| menu:m | help:? |"
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  "}}}
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'sickill/vim-pasta'
-  Plug 'bronson/vim-trailing-whitespace'
-  " Easymotion - <leader><plug><movement>
-  Plug 'easymotion/vim-easymotion'
-  map m <plug>(easymotion-prefix)
-  Plug 'psliwka/vim-smoothie'
-  Plug 'djoshea/vim-autoread'
   Plug 'alvan/vim-closetag' " {{{
-  " filetypes like xml, html, xhtml, ...
-  " These are the file types where this plugin is enabled.
-  let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact'
-  " integer value [0|1]
-  " This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+  let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact,html.handlebars'
   let g:closetag_emptyTags_caseSensitive = 1
-  " dict
-  " Disables auto-close if not in a "valid" region (based on filetype)
   let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
     \ 'javascript.jsx': 'jsxRegion',
     \ }
-  " Shortcut for closing tags, default is '>'
   let g:closetag_shortcut = '>'
   " Add > at current position without closing the current tag, default is ''
   let g:closetag_close_shortcut = '<leader>>' "}}}
@@ -160,90 +99,64 @@ call plug#begin('~/.vim/plugged')
         ProjectRootCD
       endif
     catch
-    " Silently ignore invalid buffers
     endtry
   endfunction
-
   autocmd BufEnter * call <SID>AutoProjectRootCD()
   "}}}
-  Plug 'chrisbra/Colorizer'
   Plug 'jcherven/jummidark.vim'
-  " Plug '~/Desktop/jummidark.vim'
-  " Conditionally load these on markup files
-  let markupFiles = ['html', 'javascript', 'javascriptreact', 'xml', 'css', 'scss']
-  Plug 'hail2u/vim-css3-syntax', { 'for': markupFiles }
-  Plug 'cakebaker/scss-syntax.vim', { 'for': markupFiles }
-  Plug 'AndrewRadev/tagalong.vim', { 'for': markupFiles }
-  Plug 'jiangmiao/auto-pairs', { 'for': markupFiles }
-  Plug 'mattn/emmet-vim', { 'for': markupFiles }
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'mattn/emmet-vim'
   let g:user_emmet_leader_key=','
-  " Code completion. See github.com/neoclide/coc.nvim/wiki/ for usage help {{{
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'valloric/MatchTagAlways' "{{{
+  let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xml' : 1,
+    \ 'html.handlebars' : 1,
+    \ 'javascript' : 1,
+    \ 'javascriptreact' : 1,
+  \}
+  "}}}
+  Plug 'chrisbra/colorizer'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} "{{{
   let g:coc_global_extensions=[
-        \'coc-json',
-        \'coc-tsserver',
-        \'coc-css',
-        \'coc-html',
-        \'coc-emmet',
-        \'coc-python',
-        \'coc-highlight',
-        \'coc-yaml',
-        \'coc-markdownlint',
-        \'coc-powershell',
-        \'coc-vimlsp'
-        \]
-  " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-emmet', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-  " Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-  " let g:markdown_fenced_languages = [
-  "       \ 'vim',
-  "       \ 'help'
-  "       \]
-  " Plug 'coc-extensions/coc-powershell', {'do': 'yarn install --frozen-lockfile'}
+    \'coc-tsserver',
+    \'coc-json',
+    \'coc-css',
+    \'coc-scssmodules',
+    \'coc-html',
+    \'coc-emmet',
+    \'coc-python',
+    \'coc-yaml',
+    \'coc-powershell',
+    \'coc-vimlsp',
+    \'coc-sh',
+    \'coc-sql',
+    \'coc-lists',
+    \'coc-git',
+    \'coc-highlight',
+    \'coc-ember',
+    \'coc-prettier',
+    \'coc-explorer',
+    \'coc-marketplace'
+    \]
+  let g:markdown_fenced_languages=[
+    \ 'vim',
+    \ 'help'
+    \]
   " }}}
 call plug#end()
 
-" Statusline (Builtin) Configuration {{{
-" Left alignment for the below customizations
-set statusline=
-" Current buffer's file path relative to the git project root
-set statusline+=\ %f
-" Modifiable and Read Only marker (modifiable not yet included)
-set statusline+=%{&readonly?'\ ':''}
-" Modified marker
-set statusline+=%{&modified?'[+]':''}\ 
-" CoC statusline integration
-" set statusline+=%{coc#status()}\ 
-" Right alignment for the below customizations
-set statusline+=%=
-" Current filetype
-set statusline+=%y
-" Current line number,column number
-" set statusline+=%0*\ %l,%2c\ %3p%%\ 
-" Current percentage through the file
-set statusline+=%3p%%\ 
-" End Statusline Config }}}
-
-" CoC settings for vim/nvim {{{
+" CoC Configuration {{{
+" Vim settings required by CoC
 set hidden
 set nobackup
 set nowritebackup
 set updatetime=300
-" These are optional
-set cmdheight=2
-set shortmess+=c
-set signcolumn=no
-highlight CocCodeLens ctermfg=8 guifg=#4e4e4e
-" Adds a command :Prettier
+" Commands
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Autocommands
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Keybindings
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
 \ <SID>check_back_space() ? "\<TAB>" :
@@ -253,18 +166,49 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+inoremap <silent><expr> <C-n> coc#refresh()
+nmap <Leader>/ :CocCommand explorer<CR>
+xmap <Leader>f <Plug>(coc-format-selected)
+nmap <Leader>f <Plug>(coc-format-selected)
+
+" }}}
+
+" Statusline (Builtin) Configuration {{{
+" Left alignment for the below customizations
+set statusline=
+" Current buffer's file path relative to the git project root
+set statusline+=\ %f
+" Read-only marker
+set statusline+=%{!&readonly?'':'\ '}
+" Modified marker
+set statusline+=%{&modified?'[+]':''}\ 
+" Right alignment for the below customizations
+set statusline+=%=
+" CoC statusline integration
+set statusline+=%{coc#status()}\ 
+" Current filetype
+set statusline+=%y
+" Current line number,column number
+" set statusline+=%0*\ %l,%2c\ %3p%%\ 
+" Current percentage through the file
+set statusline+=%3p%%\ 
 " }}}
 
 " GUI vim (macvim, gvim, etc) Settings {{{
 if has('gui')
   set belloff=all
-  " set guifont=Iosevka\ Term:h14
+  " Font setting
+  if has("gui_macvim")
+    set guifont=Dina:h16
+  elseif has("gui_win32")
+    set guifont=Terminus:h12
+  endif
   set guicursor+=a:blinkon0
-  set linespace=-1
   set lines=45 columns=84
   " Displays the statusline when there is no split
   set laststatus=2
