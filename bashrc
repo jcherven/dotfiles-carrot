@@ -6,41 +6,40 @@
 # https://www.topbug.net/blog/2016/09/27/make-gnu-less-more-powerful/
 export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --no-init --window=-8'
 
-# Set nvim/vim as the default editor if either are installed
-#if [ -x "$(command -v nvim)" ]; then
-#  export EDITOR=nvim
-#else
-#  export EDITOR=vi
-#fi
+# Set nvim as the default editor if vanilla vim is installed
+if [ -x "$(command -v nvim)" ]; then
+ export EDITOR=nvim
+fi
 
 # end PATH exports
 
 # Prompt configuration {{{
+# NORMALBLACK="\[\033[0;30m\]"
+# NORMALRED="\[\033[0;31m\]"
+# NORMALGREEN="\[\033[0;32m\]"
+# NORMALYELLOW="\[\033[0;33m\]"
+NORMALBLUE="\[\033[0;34m\]"
+# NORMALMAGENTA="\[\033[0;35m\]"
+# NORMALCYAN="\[\033[0;36m\]"
+# NORMALWHITE="\[\033[0;37m\]"
+
+# BRIGHTBLACK="\[\033[1;30m\]"
+BRIGHTRED="\[\033[1;31m\]"
+# BRIGHTGREEN="\[\033[1;32m\]"
+# BRIGHTYELLOW="\[\033[1;33m\]"
+BRIGHTBLUE="\[\033[1;34m\]"
+# BRIGHTMAGENTA="\[\033[1;35m\]"
+# BRIGHTCYAN="\[\033[1;36m\]"
+# BRIGHTWHITE="\[\033[1;37m\]"
+RESETCOLOR="\[\033[0m\]"
 # Git prompt script needs to be manually updated every so often from https://github.com/git/git/tree/contrib/completion
-GITPROMPT="$HOME/dotfiles/bash_completion/git-prompt.sh"
+GITPROMPT="$HOME/bash_completion/git-prompt.sh"
 if [ -f  "$GITPROMPT" ]; then
   source "$GITPROMPT"
   export GIT_PS1_SHOWDIRTYSTATE=1
-  # NORMALBLACK="\[\033[0;30m\]"
-  # NORMALRED="\[\033[0;31m\]"
-  # NORMALGREEN="\[\033[0;32m\]"
-  # NORMALYELLOW="\[\033[0;33m\]"
-  NORMALBLUE="\[\033[0;34m\]"
-  # NORMALMAGENTA="\[\033[0;35m\]"
-  # NORMALCYAN="\[\033[0;36m\]"
-  # NORMALWHITE="\[\033[0;37m\]"
-
-  # BRIGHTBLACK="\[\033[1;30m\]"
-  BRIGHTRED="\[\033[1;31m\]"
-  # BRIGHTGREEN="\[\033[1;32m\]"
-  # BRIGHTYELLOW="\[\033[1;33m\]"
-  BRIGHTBLUE="\[\033[1;34m\]"
-  # BRIGHTMAGENTA="\[\033[1;35m\]"
-  # BRIGHTCYAN="\[\033[1;36m\]"
-  # BRIGHTWHITE="\[\033[1;37m\]"
-
-  RESETCOLOR="\[\033[0m\]"
   export PS1="$NORMALBLUE\u $BRIGHTBLUE\W$BRIGHTRED\$(__git_ps1)$RESETCOLOR \$ "
+else
+  export PS1="$NORMALBLUE\u $BRIGHTBLUE\W$BRIGHTRED $RESETCOLOR\$ "
 fi
 #}}}
 
@@ -82,8 +81,8 @@ man() {
 }
 #}}}
 
-# Git completion for branch names, subcommands, and more
-GITCOMPLETION="$HOME/dotfiles/bash_completion/git-completion.bash"
+# Source git completion script if present/symlinked
+GITCOMPLETION="$HOME/bash_completion/git-completion.bash"
 if [ -f "$GITCOMPLETION" ]; then
   source "$GITCOMPLETION"
 fi
